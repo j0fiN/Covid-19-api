@@ -1,0 +1,21 @@
+python -m pip install --upgrade pip && pip install --user virtualenv && py -m venv env && .\env\Scripts\activate && echo . > requirements.txt && copy con requirements.txt &&  pip install -r requirements.txt && echo . > api.py && echo . > .env && pip freeze
+
+
+
+
+
+
+
+
+
+
+
+flask
+(All)
+requests
+pymongo
+dnspython
+beautifulsoup4
+html5lib
+scrapy
+(crtl + z)
