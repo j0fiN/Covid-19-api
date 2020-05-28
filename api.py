@@ -1,8 +1,6 @@
 from flask import *
-import dotenv
-import os
-import Database
-import pymongo
+import dotenv,os,Database,pymongo
+
 dotenv.load_dotenv()
 print(os.getenv('API-KEY'))
 api = Flask(__name__)
