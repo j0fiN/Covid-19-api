@@ -9,13 +9,16 @@ api = Flask(__name__)
 def home():
     return """<p>END POINT:/api/api-key/'category(country or region)'/'data'</p><p>UPDATE:/api/update</p>\n<p>NOTE:type the country name with first letter caps</p>"""
 
-@api.route('/api/update')
-def update():
-    try:
-        Database.update_database()
-        return "done"
-    except:
-        abort(500)
+@api.route('/api/<string:key>/update')
+def update(key):
+    if key == os.getenv('API-KEY'):
+        try:
+            Database.update_database()
+            return "done"
+        except:
+            abort(500)
+    else:
+        abort(401)
 
 
 def db():
