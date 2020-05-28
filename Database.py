@@ -1,11 +1,18 @@
 import pymongo
+import os
 import scraper
-cluster =pymongo.MongoClient('mongodb+srv://Jofin:JT9wYx0RQKObQVvO@cluster0-e29hp.mongodb.net/test?retryWrites=true&w=majority',connect=True)
-database = cluster["birthday"]
+import dotenv
+dotenv.load_dotenv()
+pas = os.getenv('PASSWORD')
 
-collection = database["COVID-19"]
+def update_database():
+    client = pymongo.MongoClient(f'mongodb+srv://Jofin:{pas}@cluster0-e29hp.mongodb.net/test?retryWrites=true&w=majority')
+    data = scraper.scrape()
+    cluster = client['birthday']
+    coll = cluster['COVID-19']
+    coll.delete_many({})
+    coll.insert_many(data)
+    print('done')
 
-data = scraper.scrape()
-
-collection.insert_many(data)
-
+if __name__=="__main__":
+    update_database()

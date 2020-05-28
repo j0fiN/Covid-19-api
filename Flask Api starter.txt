@@ -18,4 +18,5 @@ dnspython
 beautifulsoup4
 html5lib
 scrapy
+python-dotenv
 (crtl + z)
