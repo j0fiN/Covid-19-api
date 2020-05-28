@@ -42,4 +42,4 @@ def req(key,category,data):
         abort(401)
 
 if __name__ =="__main__":
-    api.run(debug=True)
+    api.run()
